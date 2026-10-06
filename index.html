@@ -1,0 +1,1320 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>İlber Doruk Geliyor! 👶</title>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+<style>
+* {
+    box-sizing: border-box;
+}
+
+:root {
+    --bg: #f6f3ee;
+    --white: #ffffff;
+    --text: #263746;
+    --muted: #71808c;
+    --blue: #7fa8bc;
+    --blue-dark: #527d92;
+    --blue-soft: #e6f0f4;
+    --cream: #eee5d8;
+    --green: #6f9b7d;
+    --red: #bd7474;
+    --shadow: 0 14px 40px rgba(38,55,70,.08);
+    --radius: 22px;
+}
+
+body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--text);
+    font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+
+button, input, select, textarea {
+    font: inherit;
+}
+
+button {
+    cursor: pointer;
+}
+
+.container {
+    width: min(1180px, calc(100% - 32px));
+    margin: auto;
+}
+
+/* HERO */
+.hero {
+    min-height: 410px;
+    display: flex;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+    background: radial-gradient(circle at 85% 20%, rgba(255,255,255,.9), transparent 30%),
+                linear-gradient(135deg, #dce8ec 0%, #f4eee6 55%, #eee4d7 100%);
+}
+
+.hero:after {
+    content: "";
+    position: absolute;
+    width: 420px;
+    height: 420px;
+    right: -120px;
+    bottom: -180px;
+    border-radius: 50%;
+    background: rgba(255,255,255,.45);
+}
+
+.hero-content {
+    position: relative;
+    z-index: 2;
+    padding: 55px 0;
+}
+
+.eyebrow {
+    display: inline-flex;
+    padding: 8px 14px;
+    border-radius: 999px;
+    background: rgba(255,255,255,.75);
+    color: var(--blue-dark);
+    font-size: 13px;
+    font-weight: 700;
+    margin-bottom: 20px;
+}
+
+.hero h1 {
+    font-size: clamp(42px, 7vw, 72px);
+    line-height: .95;
+    margin: 0 0 18px;
+    letter-spacing: -3px;
+}
+
+.hero p {
+    font-size: 18px;
+    color: #52616d;
+    max-width: 620px;
+    line-height: 1.6;
+}
+
+.parents {
+    margin-top: 22px;
+    font-size: 16px;
+    color: var(--blue-dark);
+    font-weight: 700;
+}
+
+/* BABY INFO */
+.info-section {
+    padding: 45px 0 20px;
+}
+
+.info-grid {
+    display: grid;
+    grid-template-columns: 1.15fr .85fr;
+    gap: 22px;
+}
+
+.card {
+    background: var(--white);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+}
+
+.baby-card {
+    padding: 30px;
+    display: flex;
+    gap: 30px;
+    align-items: center;
+}
+
+.section-label {
+    color: var(--blue-dark);
+    text-transform: uppercase;
+    font-size: 12px;
+    letter-spacing: 1.5px;
+    font-weight: 800;
+}
+
+.baby-card h2 {
+    font-size: 30px;
+    margin: 8px 0 10px;
+}
+
+.stats {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+    margin-top: 20px;
+}
+
+.stat {
+    background: var(--blue-soft);
+    padding: 12px 16px;
+    border-radius: 14px;
+}
+
+.stat strong {
+    display: block;
+    font-size: 17px;
+}
+
+.stat span {
+    font-size: 12px;
+    color: var(--muted);
+}
+
+.papaya {
+    width: 140px;
+    height: 95px;
+    border-radius: 70% 45% 65% 45%;
+    transform: rotate(-20deg);
+    background: linear-gradient(135deg, #f3c66d, #e69a55);
+    position: relative;
+    box-shadow: inset -12px -8px 20px rgba(130,70,20,.1);
+    flex-shrink: 0;
+}
+
+.papaya:before {
+    content: "";
+    position: absolute;
+    width: 14px;
+    height: 14px;
+    background: #668466;
+    border-radius: 50%;
+    top: -4px;
+    right: 10px;
+}
+
+.papaya:after {
+    content: "••••••";
+    position: absolute;
+    color: #7e5531;
+    letter-spacing: 10px;
+    left: 35px;
+    top: 33px;
+    font-size: 14px;
+}
+
+.countdown {
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.countdown h3 {
+    margin: 7px 0 20px;
+    font-size: 24px;
+}
+
+.count-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 8px;
+}
+
+.count-box {
+    background: var(--cream);
+    border-radius: 14px;
+    padding: 14px 6px;
+    text-align: center;
+}
+
+.count-box strong {
+    display: block;
+    font-size: 22px;
+}
+
+.count-box span {
+    color: var(--muted);
+    font-size: 11px;
+}
+
+/* SEARCH & ACTION BAR */
+.action-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 25px;
+    flex-wrap: wrap;
+}
+
+.search-filter-group {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+    flex: 1;
+}
+
+.search-input, .filter-select {
+    padding: 12px 16px;
+    border: 1px solid #ddd;
+    background: white;
+    border-radius: 14px;
+    outline: none;
+}
+
+.search-input {
+    flex: 1;
+    min-width: 200px;
+}
+
+.add-suggestion-btn {
+    background: #527d92;
+    color: white;
+    border: 0;
+    padding: 12px 20px;
+    border-radius: 14px;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+
+}
+
+.add-suggestion-btn:hover {
+    background: #3e6375;
+}
+
+/* PRODUCTS */
+.products-section {
+    padding: 45px 0 70px;
+}
+
+.products-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 22px;
+}
+
+.product {
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+}
+
+.product-image {
+    height: 195px;
+    background: linear-gradient(135deg, #e4edf0, #eee4d8);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    position: relative;
+}
+
+.product-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.product-placeholder {
+    font-size: 50px;
+}
+
+.product-body {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+}
+
+.category {
+    color: var(--blue-dark);
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-weight: 800;
+}
+
+.product h3 {
+    margin: 6px 0;
+    font-size: 19px;
+}
+
+.product-description {
+    color: var(--muted);
+    font-size: 13px;
+    line-height: 1.5;
+    margin-bottom: 12px;
+}
+
+.group-gift-badge {
+    display: inline-block;
+    background: #eaf2e8;
+    color: #4a7751;
+    font-size: 11px;
+    font-weight: 700;
+    padding: 4px 8px;
+    border-radius: 8px;
+    margin-bottom: 8px;
+}
+
+.progress-bar-bg {
+    height: 8px;
+    background: #e9ecef;
+    border-radius: 10px;
+    overflow: hidden;
+    margin: 8px 0 12px;
+}
+
+.progress-bar-fill {
+    height: 100%;
+    background: #6f9b7d;
+    transition: width 0.3s;
+}
+
+.meta {
+    margin: 10px 0;
+    display: grid;
+    gap: 4px;
+    font-size: 12px;
+}
+
+.meta span {
+    color: var(--muted);
+}
+
+.status-badge {
+    padding: 10px 12px;
+    border-radius: 12px;
+    background: #edf5ef;
+    color: #527960;
+    font-weight: 700;
+    font-size: 13px;
+    margin-bottom: 12px;
+    text-align: center;
+}
+
+.status-badge.full {
+    background: #f8eaea;
+    color: #9b5c5c;
+}
+
+.priority {
+    display: inline-block;
+    padding: 4px 8px;
+    border-radius: 999px;
+    background: var(--cream);
+    font-size: 11px;
+    font-weight: 700;
+    align-self: flex-start;
+}
+
+.button-group {
+    margin-top: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.reserve-btn, .primary-btn {
+    border: 0;
+    width: 100%;
+    padding: 12px 16px;
+    border-radius: 13px;
+    background: var(--blue-dark);
+    color: white;
+    font-weight: 700;
+    transition: .2s;
+}
+
+.reserve-btn:hover, .primary-btn:hover {
+    opacity: .92;
+}
+
+.reserve-btn:disabled {
+    background: #c4c8ca;
+    cursor: not-allowed;
+}
+
+.secondary-btn {
+    border: 1px solid var(--blue-dark);
+    background: transparent;
+    color: var(--blue-dark);
+    padding: 10px 16px;
+    border-radius: 13px;
+    font-weight: 700;
+    text-align: center;
+    text-decoration: none;
+    font-size: 13px;
+}
+
+/* MODALS */
+.modal {
+    display: none;
+    position: fixed;
+    inset: 0;
+    z-index: 100;
+    background: rgba(30,42,50,.55);
+    padding: 20px;
+    align-items: center;
+    justify-content: center;
+}
+
+.modal.active {
+    display: flex;
+}
+
+.modal-box {
+    width: min(500px, 100%);
+    background: white;
+    border-radius: 24px;
+    padding: 28px;
+    max-height: 90vh;
+    overflow-y: auto;
+}
+
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.modal-header h3 {
+    margin: 0;
+    font-size: 22px;
+}
+
+.close {
+    border: 0;
+    background: #f1f2f2;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    font-size: 18px;
+}
+
+.form-group {
+    margin: 15px 0;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 6px;
+    font-size: 13px;
+    font-weight: 700;
+}
+
+.form-group input, .form-group select, .form-group textarea {
+    width: 100%;
+    border: 1px solid #ddd;
+    padding: 11px;
+    border-radius: 11px;
+    outline: none;
+}
+
+/* ADMIN PANEL */
+.admin-section {
+    display: none;
+    padding: 30px 0 80px;
+}
+
+.admin-section.visible {
+    display: block;
+}
+
+.admin-panel {
+    padding: 28px;
+}
+
+.admin-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 22px;
+}
+
+.admin-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 25px;
+}
+
+.admin-card-item {
+    padding: 14px;
+    border-bottom: 1px solid #eee;
+}
+
+.admin-actions {
+    display: flex;
+    gap: 7px;
+    margin-top: 8px;
+}
+
+.small-btn {
+    border: 0;
+    padding: 7px 11px;
+    border-radius: 8px;
+    background: #edf0f1;
+    font-size: 12px;
+}
+
+.danger {
+    background: #f6dddd;
+    color: #8e5050;
+}
+
+/* TOAST */
+.toast {
+    position: fixed;
+    bottom: 25px;
+    left: 50%;
+    transform: translateX(-50%) translateY(100px);
+    background: #273b48;
+    color: white;
+    padding: 14px 22px;
+    border-radius: 12px;
+    opacity: 0;
+    transition: .3s;
+    z-index: 300;
+}
+
+.toast.show {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+}
+
+footer {
+    background: #293d4a;
+    color: #dce4e8;
+    padding: 35px 0;
+    text-align: center;
+}
+
+@media(max-width: 900px) {
+    .info-grid, .admin-grid { grid-template-columns: 1fr; }
+    .products-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media(max-width: 620px) {
+    .products-grid { grid-template-columns: 1fr; }
+    .hero h1 { font-size: 42px; }
+    .baby-card { flex-direction: column; align-items: flex-start; }
+}
+</style>
+</head>
+
+<body>
+
+<!-- HERO -->
+<header class="hero">
+    <div class="container hero-content">
+        <div class="eyebrow">ŞUBAT 2027'DE ARAMIZDA 👶</div>
+        <h1>İlber Doruk<br>Geliyor!</h1>
+        <p>Minik İlber Doruk'un ihtiyaçlarını birlikte tamamlayalım. Listeden istediğiniz ürünü tek başınıza alabilir veya ortak hediye/katkıda bulunabilirsiniz.</p>
+        <div class="parents">Buse & Ufuk ❤️</div>
+    </div>
+</header>
+
+<!-- BABY INFO -->
+<section class="info-section">
+<div class="container">
+    <div class="info-grid">
+        <div class="card baby-card">
+            <div>
+                <div class="section-label">Şu an yaklaşık</div>
+                <h2>23. Hafta</h2>
+                <p>İlber Doruk yaklaşık bir <strong>papaya</strong> büyüklüğünde. 🌱</p>
+                <div class="stats">
+                    <div class="stat"><strong>~29 cm</strong><span>Boy</span></div>
+                    <div class="stat"><strong>~550 g</strong><span>Ağırlık</span></div>
+                    <div class="stat"><strong>Papaya</strong><span>Yaklaşık boyut</span></div>
+                </div>
+            </div>
+            <div class="papaya"></div>
+        </div>
+
+        <div class="card countdown">
+            <div class="section-label">Tahmini doğuma kalan</div>
+            <h3>İlber Doruk'u bekliyoruz ✨</h3>
+            <div class="count-grid">
+                <div class="count-box"><strong id="days">--</strong><span>Gün</span></div>
+                <div class="count-box"><strong id="hours">--</strong><span>Saat</span></div>
+                <div class="count-box"><strong id="minutes">--</strong><span>Dakika</span></div>
+                <div class="count-box"><strong id="seconds">--</strong><span>Saniye</span></div>
+            </div>
+            <p style="font-size:12px;color:#8a949b;margin-top:15px;">Tahmini tarih: 15 Şubat 2027</p>
+        </div>
+    </div>
+</div>
+</section>
+
+<!-- PRODUCTS SECTION -->
+<section class="products-section">
+<div class="container">
+    
+    <div class="action-bar">
+        <div class="search-filter-group">
+            <input type="text" id="searchInput" class="search-input" placeholder="Ürün veya marka ara..." oninput="renderProducts()">
+            <select class="filter-select" id="categoryFilter" onchange="renderProducts()">
+                <option value="">Tüm Kategoriler</option>
+            </select>
+        </div>
+        <button class="add-suggestion-btn" onclick="openAddProductModal(true)">
+            <span>+</span> Ürün Öner / Ekle
+        </button>
+    </div>
+
+    <div id="loading" style="text-align:center;padding:40px;">Ürünler yükleniyor...</div>
+    <div id="productsGrid" class="products-grid"></div>
+    <div id="emptyProducts" style="display:none;text-align:center;padding:50px;color:#71808c;">Aramanıza uygun ürün bulunamadı.</div>
+
+</div>
+</section>
+
+<!-- ADMIN SECTION (ANNE & BABA İÇİN DETAYLI GÖRÜNÜM) -->
+<section id="adminSection" class="admin-section">
+<div class="container">
+    <div class="card admin-panel">
+        <div class="admin-top">
+            <div>
+                <div class="section-label">Yönetim (Anne & Baba)</div>
+                <h2 style="margin:5px 0;">Admin Paneli</h2>
+            </div>
+            <button class="small-btn" onclick="logoutAdmin()">Çıkış Yap</button>
+        </div>
+
+        <div class="admin-grid">
+            <div>
+                <h3>Ürün Yönetimi & Ekleme</h3>
+                <button class="primary-btn" onclick="openAddProductModal(false)" style="margin-bottom:15px;">+ Yeni Ürün Ekle</button>
+                <div id="adminProductsList"></div>
+            </div>
+
+            <div>
+                <h3>Rezervasyonlar & Alınan Hediyeler (Kim Ne Aldı?)</h3>
+                <div id="adminReservationsList">Yükleniyor...</div>
+            </div>
+        </div>
+    </div>
+</div>
+</section>
+
+<!-- RESERVATION / CONTRIBUTION MODAL -->
+<div id="reservationModal" class="modal">
+    <div class="modal-box">
+        <div class="modal-header">
+            <h3 id="resModalTitle">Ürünü Ayır</h3>
+            <button class="close" onclick="closeModal('reservationModal')">×</button>
+        </div>
+        <p id="resProductName" style="color:#71808c;font-weight:600;"></p>
+
+        <form id="reservationForm">
+            <input type="hidden" id="resProductId">
+            <input type="hidden" id="resType"> <!-- "single" or "group" -->
+
+            <div class="form-group">
+                <label>Adınız Soyadınız *</label>
+                <input id="resName" placeholder="Örn. Ayşe Teyze" required>
+            </div>
+
+            <div id="singleQtyGroup" class="form-group">
+                <label>Kaç Adet Alacaksınız?</label>
+                <select id="resQuantity"></select>
+            </div>
+
+            <div id="groupAmountGroup" class="form-group" style="display:none;">
+                <label>Katkı Miktarınız (TL) *</label>
+                <input id="resAmount" type="number" min="50" step="50" placeholder="Örn. 500">
+            </div>
+
+            <div class="form-group">
+                <label>İlber Doruk'a Notunuz (İsteğe Bağlı)</label>
+                <textarea id="resNote" placeholder="Minik İlber'e tatlı bir mesaj bırakabilirsiniz..."></textarea>
+            </div>
+
+            <button class="primary-btn" type="submit">Hediyeyi Onayla ❤️</button>
+        </form>
+    </div>
+</div>
+
+<!-- ADD / SUGGEST PRODUCT MODAL -->
+<div id="addProductModal" class="modal">
+    <div class="modal-box">
+        <div class="modal-header">
+            <h3 id="addProductModalTitle">Yeni Ürün Ekle</h3>
+            <button class="close" onclick="closeModal('addProductModal')">×</button>
+        </div>
+
+        <form id="productForm">
+            <input type="hidden" id="editProductId">
+            <input type="hidden" id="isSuggestionFlag" value="false">
+
+            <div class="form-group">
+                <label>Ürün Adı *</label>
+                <input id="pName" required>
+            </div>
+
+            <div class="form-group">
+                <label>Kategori *</label>
+                <input id="pCategory" placeholder="Örn. Bebek Odası, Tekstil" required>
+            </div>
+
+            <div class="form-group">
+                <label>Ortak Alıma Açık Mı? (Grup Hediyesi)</label>
+                <select id="pIsGroup" onchange="toggleGroupGiftFields()">
+                    <option value="false">Hayır (Tek Kişi Alır)</option>
+                    <option value="true">Evet (Birden Fazla Kişi Bütçesine Göre Katkı Sağlar)</option>
+                </select>
+            </div>
+
+            <div id="qtyField" class="form-group">
+                <label>Adet *</label>
+                <input id="pQuantity" type="number" min="1" value="1">
+            </div>
+
+            <div id="targetAmountField" class="form-group" style="display:none;">
+                <label>Hedef Tutar (TL) *</label>
+                <input id="pTargetAmount" type="number" min="0" placeholder="Örn. 12000">
+            </div>
+
+            <div class="form-group">
+                <label>Marka / Model</label>
+                <input id="pBrand" placeholder="Örn. Chicco Next2Me">
+            </div>
+
+            <div class="form-group">
+                <label>Satın Alma / İnceleme Linki</label>
+                <input id="pLink" placeholder="https://...">
+            </div>
+
+            <div class="form-group">
+                <label>Görsel URL</label>
+                <input id="pImage" placeholder="https://...">
+            </div>
+
+            <div class="form-group">
+                <label>Açıklama / Tercih / Renk Notu</label>
+                <textarea id="pDescription" placeholder="Örn. Bej renk tercih edilmektedir."></textarea>
+            </div>
+
+            <button class="primary-btn" type="submit">Kaydet</button>
+        </form>
+    </div>
+</div>
+
+<!-- ADMIN LOGIN MODAL -->
+<div id="adminLoginModal" class="modal">
+    <div class="modal-box">
+        <div class="modal-header">
+            <h3>Anne & Baba Girişi</h3>
+            <button class="close" onclick="closeModal('adminLoginModal')">×</button>
+        </div>
+        <form id="adminLoginForm">
+            <div class="form-group">
+                <label>Admin Şifresi</label>
+                <input id="adminPassword" type="password" required>
+            </div>
+            <button class="primary-btn">Giriş Yap</button>
+        </form>
+    </div>
+</div>
+
+<div id="toast" class="toast"></div>
+
+<footer>
+    <div class="container">
+        <strong>İlber Doruk</strong>
+        <div style="margin-top:6px;font-size:13px;">Sevgiyle bekleniyor. 🤍</div>
+        <button onclick="openModal('adminLoginModal')" style="margin-top:18px;border:0;background:transparent;color:#9fb0b9;font-size:11px;cursor:pointer;">
+            Ebeveyn Girişi (Admin)
+        </button>
+    </div>
+</footer>
+
+<script>
+/* SUPABASE CONFIG (Varsayılan Yerel Hafıza Destekli) */
+const SUPABASE_URL = "https://oygyxpiwhbhwakzpbjyv.supabase.co";
+const SUPABASE_KEY = "sb_publishable_Vil6dW6UWJCCTVNhASqr_Q_FmKJQi66";
+let supabaseClient = null;
+
+if (window.supabase && SUPABASE_URL.includes("http")) {
+    try { supabaseClient = window.supabase.createClient(SUPABASE_URL, SUPABASE_KEY); } catch(e){}
+}
+
+/* ÖRNEK HAZIR LİSTE (İlk Kurulumda Yüklenir) */
+const INITIAL_DEMO_PRODUCTS = [
+    {
+        id: 1,
+        name: "Park Yatak & Anne Yanı Beşik",
+        category: "Bebek Odası",
+        quantity: 1,
+        target_amount: 0,
+        collected_amount: 0,
+        brand: "Chicco",
+        model: "Next2Me Magic",
+        description: "Anne yanı olarak kullanılabilen, sallanabilir beşik.",
+        image: "https://images.unsplash.com/photo-1555252333-9f8e92e65df9?w=600&auto=format&fit=crop",
+        link: "https://www.google.com",
+        priority: "Çok Yüksek"
+    },
+    {
+        id: 2,
+        name: "3'ü 1 Araç Bebek Arabası (Oto Koltuklu)",
+        category: "Taşıma & Seyahat",
+        quantity: 1,
+        target_amount: 15000,
+        collected_amount: 4500,
+        brand: "Hamilton",
+        model: "X1 Plus",
+        description: "Ortak hediyeye uygundur! Dilediğiniz tutarda katkıda bulunabilirsiniz.",
+        image: "https://images.unsplash.com/photo-1591154669695-5f2a8d20c089?w=600&auto=format&fit=crop",
+        link: "https://www.google.com",
+        priority: "Yüksek"
+    },
+    {
+        id: 3,
+        name: "Bebek Bakım Çantası & Alt Açma Seti",
+        category: "Bakım & Sağlık",
+        quantity: 1,
+        target_amount: 0,
+        collected_amount: 0,
+        brand: "Skip Hop",
+        model: "Duo Signature",
+        description: "Siyah veya Bej renk tercihimizdir.",
+        image: "https://images.unsplash.com/photo-1544816155-12df9643f363?w=600&auto=format&fit=crop",
+        link: "https://www.google.com",
+        priority: "Normal"
+    },
+    {
+        id: 4,
+        name: "Cam Biberon Seti (0-6 Ay)",
+        category: "Beslenme",
+        quantity: 3,
+        target_amount: 0,
+        collected_amount: 0,
+        brand: "Philips Avent",
+        model: "Natural Response Cam",
+        description: "Yavaş akışlı cam biberon 240ml.",
+        image: "https://images.unsplash.com/photo-1519689680058-324335c77eba?w=600&auto=format&fit=crop",
+        link: "https://www.google.com",
+        priority: "Yüksek"
+    },
+    {
+        id: 5,
+        name: "Müslin Örtü Seti (4'lü)",
+        category: "Tekstil",
+        quantity: 2,
+        target_amount: 0,
+        collected_amount: 0,
+        brand: "Liewood",
+        model: "Organik Pamuk",
+        description: "%100 organik pamuk müslin örtü.",
+        image: "https://images.unsplash.com/photo-1584100936595-c0654b55a2e2?w=600&auto=format&fit=crop",
+        link: "https://www.google.com",
+        priority: "Normal"
+    }
+];
+
+let products = [];
+let reservations = [];
+let adminLoggedIn = false;
+const ADMIN_PASSWORD = "ilber2026";
+
+document.addEventListener("DOMContentLoaded", async () => {
+    startCountdown();
+    await loadData();
+});
+
+async function loadData() {
+    document.getElementById("loading").style.display = "block";
+
+    let fetchedFromDb = false;
+
+    if (supabaseClient) {
+        try {
+            const resP = await supabaseClient.from("products").select("*").order("id", { ascending: true });
+            const resR = await supabaseClient.from("reservations").select("*").order("created_at", { ascending: true });
+
+            if (!resP.error && resP.data && resP.data.length > 0) {
+                products = resP.data;
+                reservations = resR.data || [];
+                fetchedFromDb = true;
+            }
+        } catch(e) {
+            console.log("Supabase verileri alınamadı, LocalStorage kullanılıyor.");
+        }
+    }
+
+    if (!fetchedFromDb) {
+        const localP = localStorage.getItem("ilber_products");
+        const localR = localStorage.getItem("ilber_reservations");
+
+        if (localP) {
+            products = JSON.parse(localP);
+        } else {
+            products = INITIAL_DEMO_PRODUCTS;
+            localStorage.setItem("ilber_products", JSON.stringify(products));
+        }
+
+        reservations = localR ? JSON.parse(localR) : [];
+    }
+
+    document.getElementById("loading").style.display = "none";
+    populateCategories();
+    renderProducts();
+    if (adminLoggedIn) renderAdmin();
+}
+
+function saveDataLocal() {
+    localStorage.setItem("ilber_products", JSON.stringify(products));
+    localStorage.setItem("ilber_reservations", JSON.stringify(reservations));
+}
+
+/* HELPER CALCULATIONS */
+function getReservedQuantity(productId) {
+    return reservations
+        .filter(r => Number(r.product_id) === Number(productId))
+        .reduce((sum, r) => sum + (Number(r.quantity) || 0), 0);
+}
+
+function getCollectedAmount(product) {
+    if (product.collected_amount !== undefined && product.collected_amount !== null) {
+        return Number(product.collected_amount);
+    }
+    return reservations
+        .filter(r => Number(r.product_id) === Number(product.id))
+        .reduce((sum, r) => sum + (Number(r.amount) || 0), 0);
+}
+
+function getRemainingQuantity(product) {
+    return Math.max(0, Number(product.quantity || 1) - getReservedQuantity(product.id));
+}
+
+/* CATEGORY & RENDER */
+function populateCategories() {
+    const select = document.getElementById("categoryFilter");
+    const categories = [...new Set(products.map(p => p.category).filter(Boolean))];
+    select.innerHTML = '<option value="">Tüm Kategoriler</option>';
+    categories.forEach(cat => {
+        const opt = document.createElement("option");
+        opt.value = cat;
+        opt.textContent = cat;
+        select.appendChild(opt);
+    });
+}
+
+function renderProducts() {
+    const grid = document.getElementById("productsGrid");
+    const empty = document.getElementById("emptyProducts");
+    const filterCat = document.getElementById("categoryFilter").value;
+    const searchText = document.getElementById("searchInput").value.toLowerCase();
+
+    let filtered = products.filter(p => {
+        const matchCat = !filterCat || p.category === filterCat;
+        const matchSearch = !searchText || 
+            (p.name && p.name.toLowerCase().includes(searchText)) ||
+            (p.brand && p.brand.toLowerCase().includes(searchText));
+        return matchCat && matchSearch;
+    });
+
+    grid.innerHTML = "";
+    if (!filtered.length) {
+        empty.style.display = "block";
+        return;
+    }
+    empty.style.display = "none";
+
+    filtered.forEach(product => {
+        const isGroup = Number(product.target_amount) > 0;
+        const remainingQty = getRemainingQuantity(product);
+        const collectedAmt = getCollectedAmount(product);
+        const targetAmt = Number(product.target_amount);
+
+        let isFull = isGroup ? (collectedAmt >= targetAmt) : (remainingQty <= 0);
+
+        let statusText = "";
+        if (isGroup) {
+            statusText = isFull ? "✓ Hedef Tutara Ulaşıldı!" : `Toplanan: ${collectedAmt.toLocaleString('tr-TR')} TL / ${targetAmt.toLocaleString('tr-TR')} TL`;
+        } else {
+            statusText = isFull ? "✓ Bu Ürünün Tamamı Ayrıldı" : `Kalan: ${remainingQty} adet`;
+        }
+
+        const card = document.createElement("article");
+        card.className = "card product";
+
+        const imageHtml = product.image ? `<img src="${escapeHtml(product.image)}" alt="${escapeHtml(product.name)}" onerror="this.style.display='none';this.nextElementSibling.style.display='block';">` : "";
+
+        let progressHtml = "";
+        if (isGroup) {
+            const percent = Math.min(100, Math.round((collectedAmt / targetAmt) * 100));
+            progressHtml = `
+                <div class="progress-bar-bg">
+                    <div class="progress-bar-fill" style="width: ${percent}%;"></div>
+                </div>
+            `;
+        }
+
+        card.innerHTML = `
+            <div class="product-image">
+                ${imageHtml}
+                <div class="product-placeholder" style="${product.image ? 'display:none' : ''}">👶</div>
+            </div>
+
+            <div class="product-body">
+                <div class="category">${escapeHtml(product.category || "İhtiyaç")}</div>
+                <h3>${escapeHtml(product.name)}</h3>
+                
+                ${isGroup ? `<span class="group-gift-badge">🤝 Ortak Hediye / Katkı</span>` : ''}
+
+                <div class="product-description">${escapeHtml(product.description || "")}</div>
+
+                <div class="meta">
+                    ${product.brand ? `<div><span>Marka/Model:</span> ${escapeHtml(product.brand)}${escapeHtml(product.model || '')}</div>` : ''}
+                    ${!isGroup ? `<div><span>Toplam Adet:</span> ${product.quantity}</div>` : ''}
+                </div>
+
+                <div class="status-badge ${isFull ? 'full' : ''}">${statusText}</div>
+                ${progressHtml}
+
+                <div class="button-group">
+                    ${product.link ? `<a href="${escapeHtml(product.link)}" target="_blank" class="secondary-btn">Ürünü İncele ↗</a>` : ''}
+                    <button class="reserve-btn" ${isFull ? 'disabled' : ''} onclick="openReservation(${product.id})">
+                        ${isFull ? 'Ayrıldı' : (isGroup ? 'Katkıda Bulun' : 'Bu Ürünü Alıyorum')}
+                    </button>
+                </div>
+            </div>
+        `;
+        grid.appendChild(card);
+    });
+}
+
+/* RESERVATION DIALOG */
+function openReservation(productId) {
+    const product = products.find(p => Number(p.id) === Number(productId));
+    if (!product) return;
+
+    const isGroup = Number(product.target_amount) > 0;
+    document.getElementById("resProductId").value = product.id;
+    document.getElementById("resType").value = isGroup ? "group" : "single";
+    document.getElementById("resProductName").textContent = product.name;
+
+    const qtyGroup = document.getElementById("singleQtyGroup");
+    const amtGroup = document.getElementById("groupAmountGroup");
+
+    if (isGroup) {
+        qtyGroup.style.display = "none";
+        amtGroup.style.display = "block";
+        document.getElementById("resModalTitle").textContent = "Ortak Hediye Katkısı";
+    } else {
+        qtyGroup.style.display = "block";
+        amtGroup.style.display = "none";
+        document.getElementById("resModalTitle").textContent = "Ürünü Ayır";
+
+        const remaining = getRemainingQuantity(product);
+        const qtySelect = document.getElementById("resQuantity");
+        qtySelect.innerHTML = "";
+        for (let i = 1; i <= remaining; i++) {
+            const opt = document.createElement("option");
+            opt.value = i;
+            opt.textContent = `${i} Adet`;
+            qtySelect.appendChild(opt);
+        }
+    }
+
+    openModal("reservationModal");
+}
+
+document.getElementById("reservationForm").addEventListener("submit", async function(e) {
+    e.preventDefault();
+
+    const productId = Number(document.getElementById("resProductId").value);
+    const type = document.getElementById("resType").value;
+    const name = document.getElementById("resName").value.trim();
+    const note = document.getElementById("resNote").value.trim();
+    const quantity = type === "single" ? Number(document.getElementById("resQuantity").value) : 1;
+    const amount = type === "group" ? Number(document.getElementById("resAmount").value) : 0;
+
+    const newRes = {
+        id: Date.now(),
+        product_id: productId,
+        name: name,
+        quantity: quantity,
+        amount: amount,
+        note: note,
+        created_at: new Date().toISOString()
+    };
+
+    if (supabaseClient) {
+        try {
+            await supabaseClient.from("reservations").insert(newRes);
+            if (amount > 0) {
+                const prod = products.find(p => p.id === productId);
+                const updatedAmt = (Number(prod.collected_amount) || 0) + amount;
+                await supabaseClient.from("products").update({ collected_amount: updatedAmt }).eq("id", productId);
+            }
+        } catch(e){}
+    }
+
+    // Local Update Fallback
+    reservations.push(newRes);
+    if (amount > 0) {
+        const prod = products.find(p => p.id === productId);
+        if (prod) prod.collected_amount = (Number(prod.collected_amount) || 0) + amount;
+    }
+    saveDataLocal();
+
+    closeModal("reservationModal");
+    showToast("Hediyeniz için teşekkür ederiz! ❤️");
+    await loadData();
+});
+
+/* ADMIN / ADD / EDIT PRODUCT */
+function toggleGroupGiftFields() {
+    const isGroup = document.getElementById("pIsGroup").value === "true";
+    document.getElementById("qtyField").style.display = isGroup ? "none" : "block";
+    document.getElementById("targetAmountField").style.display = isGroup ? "block" : "none";
+}
+
+function openAddProductModal(isSuggestion = false) {
+    document.getElementById("productForm").reset();
+    document.getElementById("editProductId").value = "";
+    document.getElementById("isSuggestionFlag").value = isSuggestion ? "true" : "false";
+    document.getElementById("addProductModalTitle").textContent = isSuggestion ? "Ürün Öner veya Ekle" : "Yeni Ürün Ekle";
+    toggleGroupGiftFields();
+    openModal("addProductModal");
+}
+
+document.getElementById("productForm").addEventListener("submit", async function(e) {
+    e.preventDefault();
+
+    const editId = document.getElementById("editProductId").value;
+    const isGroup = document.getElementById("pIsGroup").value === "true";
+
+    const pData = {
+        id: editId ? Number(editId) : Date.now(),
+        name: document.getElementById("pName").value.trim(),
+        category: document.getElementById("pCategory").value.trim(),
+        quantity: isGroup ? 1 : Number(document.getElementById("pQuantity").value || 1),
+        target_amount: isGroup ? Number(document.getElementById("pTargetAmount").value || 0) : 0,
+        collected_amount: 0,
+        brand: document.getElementById("pBrand").value.trim(),
+        link: document.getElementById("pLink").value.trim(),
+        image: document.getElementById("pImage").value.trim(),
+        description: document.getElementById("pDescription").value.trim()
+    };
+
+    if (supabaseClient) {
+        try {
+            if (editId) {
+                await supabaseClient.from("products").update(pData).eq("id", editId);
+            } else {
+                await supabaseClient.from("products").insert(pData);
+            }
+        } catch(e){}
+    }
+
+    if (editId) {
+        const idx = products.findIndex(p => p.id === Number(editId));
+        if (idx !== -1) products[idx] = { ...products[idx], ...pData };
+    } else {
+        products.push(pData);
+    }
+    saveDataLocal();
+
+    closeModal("addProductModal");
+    showToast("Ürün başarıyla eklendi.");
+    await loadData();
+});
+
+/* ADMIN RENDERING */
+function renderAdmin() {
+    const prodList = document.getElementById("adminProductsList");
+    const resList = document.getElementById("adminReservationsList");
+
+    prodList.innerHTML = products.map(p => `
+        <div class="admin-card-item">
+            <strong>${escapeHtml(p.name)}</strong> (${escapeHtml(p.category)})
+            <div class="admin-actions">
+                <button class="small-btn danger" onclick="deleteProduct(${p.id})">Sil</button>
+            </div>
+        </div>
+    `).join("");
+
+    if (!reservations.length) {
+        resList.innerHTML = "<p style='color:#71808c;'>Henüz hediye/katkı yapılmamış.</p>";
+        return;
+    }
+
+    /* KİM NE ALDI DETAYLI LİSTESİ (ANNE & BABA İÇİN) */
+    resList.innerHTML = reservations.map(r => {
+        const p = products.find(item => Number(item.id) === Number(r.product_id));
+        const dateStr = new Date(r.created_at).toLocaleDateString("tr-TR");
+        const details = r.amount > 0 ? `${r.amount} TL Katkı` : `${r.quantity} Adet`;
+
+        return `
+            <div class="admin-card-item">
+                <strong style="color:#527d92;font-size:15px;">${escapeHtml(r.name)}</strong>
+                <div style="font-size:13px;margin-top:2px;">
+                    <strong>Ürün:</strong> ${escapeHtml(p ? p.name : "Silinmiş Ürün")} (${details})
+                </div>
+                ${r.note ? `<div style="font-size:12px;color:#666;font-style:italic;margin-top:4px;">"${escapeHtml(r.note)}"` : ''}</div>
+                <div style="font-size:11px;color:#8a949b;margin-top:4px;">Tarih: ${dateStr}</div>
+            </div>
+        `;
+    }).join("");
+}
+
+async function deleteProduct(id) {
+    if (!confirm("Ürünü silmek istediğinize emin misiniz?")) return;
+    products = products.filter(p => p.id !== id);
+    saveDataLocal();
+    await loadData();
+}
+
+/* LOGIN & ADMIN CONTROLS */
+document.getElementById("adminLoginForm").addEventListener("submit", function(e) {
+    e.preventDefault();
+    if (document.getElementById("adminPassword").value === ADMIN_PASSWORD) {
+        adminLoggedIn = true;
+        closeModal("adminLoginModal");
+        document.getElementById("adminSection").classList.add("visible");
+        renderAdmin();
+        document.getElementById("adminSection").scrollIntoView({ behavior: "smooth" });
+        showToast("Admin paneline hoş geldiniz.");
+    } else {
+        showToast("Şifre hatalı.");
+    }
+});
+
+function logoutAdmin() {
+    adminLoggedIn = false;
+    document.getElementById("adminSection").classList.remove("visible");
+}
+
+/* MODAL / UTILS */
+function openModal(id) { document.getElementById(id).classList.add("active"); }
+function closeModal(id) { document.getElementById(id).classList.remove("active"); }
+
+function showToast(msg) {
+    const t = document.getElementById("toast");
+    t.textContent = msg;
+    t.classList.add("show");
+    setTimeout(() => t.classList.remove("show"), 3000);
+}
+
+function escapeHtml(str) {
+    return String(str || "").replace(/[&<>"']/g, m => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#039;' }[m]));
+}
+
+function startCountdown() {
+    const target = new Date("2027-02-15T00:00:00+03:00").getTime();
+    setInterval(() => {
+        const diff = Math.max(0, target - new Date().getTime());
+        document.getElementById("days").textContent = Math.floor(diff / (1000 * 60 * 60 * 24));
+        document.getElementById("hours").textContent = String(Math.floor((diff / (1000 * 60 * 60)) % 24)).padStart(2, "0");
+        document.getElementById("minutes").textContent = String(Math.floor((diff / (1000 * 60)) % 60)).padStart(2, "0");
+        document.getElementById("seconds").textContent = String(Math.floor((diff / 1000) % 60)).padStart(2, "0");
+    }, 1000);
+}
+</script>
+</body>
+</html>
