@@ -1,0 +1,1365 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>İlber Doruk Geliyor! 👶 | Hediye & İhtiyaç Listesi</title>
+
+<!-- Tailwind CSS CDN -->
+<script src="https://cdn.tailwindcss.com"></script>
+<!-- FontAwesome Icons -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<!-- Supabase JS Client -->
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        colors: {
+          babyBg: '#f8f5f0',
+          babyBlue: '#7fa8bc',
+          babyBlueDark: '#4a7082',
+          babySoftBlue: '#e8f1f5',
+          babyCream: '#f3e8d9',
+          babyRose: '#f4dcd6',
+          babyGreen: '#82a38b',
+          textDark: '#2a363f'
+        },
+        fontFamily: {
+          sans: ['Inter', 'sans-serif']
+        }
+      }
+    }
+  }
+</script>
+
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+  
+  body {
+    background-color: #f8f5f0;
+    color: #2a363f;
+    font-family: 'Inter', sans-serif;
+  }
+  
+  .glass-card {
+    background: rgba(255, 255, 255, 0.92);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.6);
+  }
+
+  .papaya-shape {
+    width: 140px;
+    height: 95px;
+    border-radius: 70% 45% 65% 45%;
+    transform: rotate(-15deg);
+    background: linear-gradient(135deg, #f7d088, #e69a55);
+    position: relative;
+    box-shadow: inset -10px -6px 16px rgba(130,70,20,.15);
+  }
+  
+  .papaya-shape:before {
+    content: "";
+    position: absolute;
+    width: 14px;
+    height: 14px;
+    background: #668466;
+    border-radius: 50%;
+    top: -4px;
+    right: 8px;
+  }
+
+  .progress-bar-fill {
+    transition: width 0.5s ease-in-out;
+  }
+</style>
+</head>
+<body class="min-h-screen flex flex-col justify-between antialiased selection:bg-babyBlue selection:text-white">
+
+<div>
+  <!-- HERO HEADER -->
+  <header class="relative overflow-hidden bg-gradient-to-br from-[#dce8ec] via-[#f4eee6] to-[#eee4d7] py-16 px-4 sm:px-8 border-b border-white/50">
+    <div class="max-w-6xl mx-auto relative z-10 flex flex-col items-center text-center">
+      
+      <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/80 text-babyBlueDark text-xs font-bold tracking-wide uppercase shadow-sm mb-6">
+        <i class="fa-solid font-bold fa-baby"></i> ŞUBAT 2027'DE ARAMIZDA 👶
+      </div>
+
+      <h1 class="text-4xl sm:text-6xl lg:text-7xl font-extrabold text-textDark tracking-tight leading-none mb-4">
+        İlber Doruk <span class="text-babyBlueDark">Geliyor!</span>
+      </h1>
+
+      <p class="text-base sm:text-lg text-slate-600 max-w-2xl leading-relaxed mb-6">
+        Minik İlber Doruk'un ihtiyaçlarını birlikte tamamlayalım. Dilerseniz tek başınıza üstlenebilir, 
+        dilerseniz yüksek bütçeli ürünlere <strong class="text-babyBlueDark">ortak katkıda</strong> bulunabilir veya listeye yeni hediye fikirleri ekleyebilirsiniz!
+      </p>
+
+      <div class="flex items-center gap-2 text-sm font-semibold text-babyBlueDark bg-white/60 px-5 py-2.5 rounded-2xl backdrop-blur-sm border border-white/40 shadow-xs">
+        <span>Buse & Ufuk</span>
+        <span class="text-rose-400">❤️</span>
+      </div>
+
+    </div>
+
+    <!-- Floating Decorative Elements -->
+    <div class="absolute -right-16 -bottom-16 w-80 h-80 bg-white/40 rounded-full blur-2xl pointer-events-none"></div>
+    <div class="absolute -left-16 -top-16 w-80 h-80 bg-babyCream/50 rounded-full blur-2xl pointer-events-none"></div>
+  </header>
+
+
+  <section class="max-w-6xl mx-auto px-4 sm:px-6 -mt-8 relative z-20">
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+
+      <!-- Baby Growth Info Card -->
+      <div class="lg:col-span-7 glass-card rounded-3xl p-6 sm:p-8 shadow-xl flex flex-col sm:flex-row items-center gap-6">
+        <div class="flex-1">
+          <span class="text-xs font-bold text-babyBlueDark uppercase tracking-widest block mb-1">Şu An Yaklaşık</span>
+          <h2 class="text-2xl sm:text-3xl font-bold text-textDark mb-2">23. Hafta</h2>
+          <p class="text-slate-600 text-sm sm:text-base leading-relaxed mb-4">
+            İlber Doruk yaklaşık bir <strong class="text-amber-700">papaya</strong> büyüklüğünde! 🌱
+          </p>
+
+          <div class="grid grid-cols-3 gap-2 text-center">
+            <div class="bg-babySoftBlue p-3 rounded-2xl">
+              <span class="block text-base sm:text-lg font-bold text-babyBlueDark">~29 cm</span>
+              <span class="text-xs text-slate-500 font-medium">Boy</span>
+            </div>
+            <div class="bg-babySoftBlue p-3 rounded-2xl">
+              <span class="block text-base sm:text-lg font-bold text-babyBlueDark">~550 g</span>
+              <span class="text-xs text-slate-500 font-medium">Ağırlık</span>
+            </div>
+            <div class="bg-babySoftBlue p-3 rounded-2xl">
+              <span class="block text-base sm:text-lg font-bold text-babyBlueDark">Papaya</span>
+              <span class="text-xs text-slate-500 font-medium">Meyve</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="flex flex-col items-center justify-center p-2">
+          <div class="papaya-shape flex items-center justify-center">
+            <span class="text-amber-900 font-bold text-xs tracking-widest bg-white/30 px-2 py-0.5 rounded">PAPAYA</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Countdown Card -->
+      <div class="lg:col-span-5 glass-card rounded-3xl p-6 sm:p-8 shadow-xl flex flex-col justify-between">
+        <div>
+          <span class="text-xs font-bold text-babyBlueDark uppercase tracking-widest block mb-1">Tahmini Doğuma Kalan</span>
+          <h3 class="text-xl font-bold text-textDark mb-4">İlber Doruk'u Bekliyoruz ✨</h3>
+
+          <div class="grid grid-cols-4 gap-2 text-center">
+            <div class="bg-babyCream/80 p-3 rounded-2xl border border-amber-100">
+              <span id="days" class="block text-xl sm:text-2xl font-black text-amber-900">--</span>
+              <span class="text-[10px] sm:text-xs text-slate-600 font-semibold uppercase">Gün</span>
+            </div>
+            <div class="bg-babyCream/80 p-3 rounded-2xl border border-amber-100">
+              <span id="hours" class="block text-xl sm:text-2xl font-black text-amber-900">--</span>
+              <span class="text-[10px] sm:text-xs text-slate-600 font-semibold uppercase">Saat</span>
+            </div>
+            <div class="bg-babyCream/80 p-3 rounded-2xl border border-amber-100">
+              <span id="minutes" class="block text-xl sm:text-2xl font-black text-amber-900">--</span>
+              <span class="text-[10px] sm:text-xs text-slate-600 font-semibold uppercase">Dakika</span>
+            </div>
+            <div class="bg-babyCream/80 p-3 rounded-2xl border border-amber-100">
+              <span id="seconds" class="block text-xl sm:text-2xl font-black text-amber-900">--</span>
+              <span class="text-[10px] sm:text-xs text-slate-600 font-semibold uppercase">Saniye</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="mt-4 pt-3 border-t border-slate-100 flex justify-between items-center text-xs text-slate-500">
+          <span>Tahmini Tarih: <strong>15 Şubat 2027</strong></span>
+          <i class="fa-solid fa-heart text-rose-400"></i>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+
+  <section class="max-w-6xl mx-auto px-4 sm:px-6 mt-12 mb-16">
+    
+    <!-- Header & Action Buttons -->
+    <div class="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-8">
+      <div>
+        <span class="text-xs font-bold text-babyBlueDark uppercase tracking-widest block mb-1">İlber Doruk İçin</span>
+        <h2 class="text-3xl sm:text-4xl font-extrabold text-textDark">İhtiyaç & Hediye Listesi</h2>
+      </div>
+
+      <div class="flex flex-wrap gap-3">
+        <!-- Guest Add Suggestion Button -->
+        <button onclick="openSuggestModal()" class="flex items-center gap-2 bg-emerald-600 hover:bg-emerald-700 text-white font-bold px-5 py-3 rounded-2xl shadow-lg shadow-emerald-600/20 transition-all hover:-translate-y-0.5">
+          <i class="fa-solid fa-plus-circle"></i>
+          <span>Yeni İhtiyaç / Öneri Ekle</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- Filter & Search Bar -->
+    <div class="glass-card rounded-2xl p-4 shadow-md mb-8 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+      <!-- Search Input -->
+      <div class="relative">
+        <i class="fa-solid fa-magnifying-glass absolute left-3.5 top-3.5 text-slate-400"></i>
+        <input type="text" id="searchInput" oninput="renderProducts()" placeholder="Ürün veya marka ara..." class="w-full pl-10 pr-4 py-2.5 bg-white border border-slate-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-babyBlue">
+      </div>
+
+      <!-- Category Filter -->
+      <div>
+        <select id="categoryFilter" onchange="renderProducts()" class="w-full py-2.5 px-3 bg-white border border-slate-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-babyBlue">
+          <option value="">Tüm Kategoriler</option>
+        </select>
+      </div>
+
+      <!-- Priority Filter -->
+      <div>
+        <select id="priorityFilter" onchange="renderProducts()" class="w-full py-2.5 px-3 bg-white border border-slate-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-babyBlue">
+          <option value="">Tüm Öncelikler</option>
+          <option value="Çok Yüksek">🔥 Çok Yüksek</option>
+          <option value="Yüksek">⚡ Yüksek</option>
+          <option value="Normal">📌 Normal</option>
+        </select>
+      </div>
+
+      <!-- Availability Filter -->
+      <div>
+        <select id="statusFilter" onchange="renderProducts()" class="w-full py-2.5 px-3 bg-white border border-slate-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-babyBlue">
+          <option value="">Tüm Durumlar</option>
+          <option value="open">Alınabilir / Açık</option>
+          <option value="group">Ortak Aranıyor 🤝</option>
+          <option value="completed">Tamamı Tamamlandı ✅</option>
+        </select>
+      </div>
+    </div>
+
+    <div id="loading" class="text-center py-16">
+      <i class="fa-solid fa-spinner fa-spin text-3xl text-babyBlue"></i>
+      <p class="mt-3 text-slate-500 font-medium">Hediye listesi yükleniyor...</p>
+    </div>
+
+    <div id="productsGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"></div>
+
+    <div id="emptyProducts" class="hidden text-center py-16 bg-white/60 rounded-3xl border border-dashed border-slate-300">
+      <i class="fa-solid fa-gift text-5xl text-slate-300 mb-3 block"></i>
+      <h3 class="text-lg font-bold text-slate-600">Aramanıza uygun ürün bulunamadı</h3>
+      <p class="text-sm text-slate-400">Filtrelerinizi değiştirebilir veya ilk ürün önerisini siz ekleyebilirsiniz!</p>
+    </div>
+
+  </section>
+
+
+  <section id="adminSection" class="hidden bg-slate-900 text-white py-12 px-4 sm:px-6 my-12 border-t-4 border-babyBlue">
+    <div class="max-w-6xl mx-auto">
+      
+      <div class="flex justify-between items-center mb-8 border-b border-slate-800 pb-4">
+        <div>
+          <span class="text-xs font-bold text-babyBlue tracking-widest uppercase">Yönetim Modu</span>
+          <h2 class="text-2xl font-bold text-white">Admin Paneli</h2>
+        </div>
+        <button onclick="logoutAdmin()" class="px-4 py-2 bg-slate-800 hover:bg-slate-700 text-slate-300 rounded-xl text-xs font-bold transition-all">
+          <i class="fa-solid fa-right-from-bracket mr-1"></i> Çıkış Yap
+        </button>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+        
+        <!-- Admin Form: Add / Edit Product -->
+        <div class="lg:col-span-5 bg-slate-800/80 p-6 rounded-2xl border border-slate-700">
+          <h3 id="formTitle" class="text-lg font-bold text-white mb-4">Ürün Ekle / Düzenle</h3>
+
+          <form id="adminProductForm" class="space-y-4">
+            <input type="hidden" id="adminEditId">
+
+            <div>
+              <label class="block text-xs font-bold text-slate-300 mb-1">Ürün Adı *</label>
+              <input type="text" id="adminName" required class="w-full px-3 py-2 bg-slate-900 border border-slate-700 rounded-xl text-sm text-white focus:outline-none focus:border-babyBlue">
+            </div>
+
+            <div class="grid grid-cols-2 gap-3">
+              <div>
+                <label class="block text-xs font-bold text-slate-300 mb-1">Kategori *</label>
+                <input type="text" id="adminCategory" placeholder="Örn: Bebek Arabası" required class="w-full px-3 py-2 bg-slate-900 border border-slate-700 rounded-xl text-sm text-white focus:outline-none focus:border-babyBlue">
+              </div>
+              <div>
+                <label class="block text-xs font-bold text-slate-300 mb-1">Öncelik</label>
+                <select id="adminPriority" class="w-full px-3 py-2 bg-slate-900 border border-slate-700 rounded-xl text-sm text-white focus:outline-none focus:border-babyBlue">
+                  <option value="Normal">Normal</option>
+                  <option value="Yüksek">Yüksek</option>
+                  <option value="Çok Yüksek">Çok Yüksek</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="grid grid-cols-2 gap-3">
+              <div>
+                <label class="block text-xs font-bold text-slate-300 mb-1">Toplam Adet *</label>
+                <input type="number" id="adminQuantity" min="1" value="1" required class="w-full px-3 py-2 bg-slate-900 border border-slate-700 rounded-xl text-sm text-white focus:outline-none focus:border-babyBlue">
+              </div>
+              <div>
+                <label class="block text-xs font-bold text-slate-300 mb-1">Tahmini Fiyat (TL)</label>
+                <input type="number" id="adminPrice" placeholder="Örn: 2500" class="w-full px-3 py-2 bg-slate-900 border border-slate-700 rounded-xl text-sm text-white focus:outline-none focus:border-babyBlue">
+              </div>
+            </div>
+
+            <div class="grid grid-cols-2 gap-3">
+              <div>
+                <label class="block text-xs font-bold text-slate-300 mb-1">Marka</label>
+                <input type="text" id="adminBrand" class="w-full px-3 py-2 bg-slate-900 border border-slate-700 rounded-xl text-sm text-white focus:outline-none focus:border-babyBlue">
+              </div>
+              <div>
+                <label class="block text-xs font-bold text-slate-300 mb-1">Model / Tercih</label>
+                <input type="text" id="adminModel" class="w-full px-3 py-2 bg-slate-900 border border-slate-700 rounded-xl text-sm text-white focus:outline-none focus:border-babyBlue">
+              </div>
+            </div>
+
+            <div>
+              <label class="block text-xs font-bold text-slate-300 mb-1">Görsel URL</label>
+              <input type="url" id="adminImage" placeholder="https://..." class="w-full px-3 py-2 bg-slate-900 border border-slate-700 rounded-xl text-sm text-white focus:outline-none focus:border-babyBlue">
+            </div>
+
+            <div>
+              <label class="block text-xs font-bold text-slate-300 mb-1">Satın Alma Linki</label>
+              <input type="url" id="adminLink" placeholder="https://..." class="w-full px-3 py-2 bg-slate-900 border border-slate-700 rounded-xl text-sm text-white focus:outline-none focus:border-babyBlue">
+            </div>
+
+            <div>
+              <label class="block text-xs font-bold text-slate-300 mb-1">Açıklama</label>
+              <textarea id="adminDescription" rows="2" class="w-full px-3 py-2 bg-slate-900 border border-slate-700 rounded-xl text-sm text-white focus:outline-none focus:border-babyBlue"></textarea>
+            </div>
+
+            <div class="flex items-center gap-2 pt-2">
+              <input type="checkbox" id="adminAllowGroup" class="w-4 h-4 accent-babyBlue rounded">
+              <label for="adminAllowGroup" class="text-xs font-semibold text-slate-200">Ortak Alıma / Katkıya Açık Olsun 🤝</label>
+            </div>
+
+            <div class="flex gap-2 pt-2">
+              <button type="submit" class="flex-1 py-2.5 bg-babyBlue hover:bg-babyBlueDark text-white font-bold rounded-xl transition-all">
+                Ürünü Kaydet
+              </button>
+              <button type="button" id="adminCancelEditBtn" onclick="resetAdminForm()" class="hidden px-4 py-2.5 bg-slate-700 hover:bg-slate-600 text-white rounded-xl text-xs font-bold">
+                İptal
+              </button>
+            </div>
+          </form>
+        </div>
+
+        <!-- Admin List: Product & Contributions Overview -->
+        <div class="lg:col-span-7 space-y-6">
+          <div class="bg-slate-800/80 p-6 rounded-2xl border border-slate-700">
+            <h3 class="text-lg font-bold text-white mb-4">Ürün Listesi & Katkılar</h3>
+            <div id="adminProductsList" class="space-y-3 max-h-[550px] overflow-y-auto pr-2"></div>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+</div>
+
+
+<!-- MODAL 1: Single Reservation or Full Take Modal -->
+<div id="reserveModal" class="fixed inset-0 bg-slate-900/60 backdrop-blur-xs z-50 hidden flex items-center justify-center p-4">
+  <div class="bg-white rounded-3xl max-w-md w-full p-6 shadow-2xl relative animate-fade-in">
+    <button onclick="closeModal('reserveModal')" class="absolute right-4 top-4 text-slate-400 hover:text-slate-600 w-8 h-8 rounded-full bg-slate-100 flex items-center justify-center">
+      <i class="fa-solid fa-xmark"></i>
+    </button>
+
+    <div class="mb-4">
+      <span class="text-xs font-bold text-babyBlueDark uppercase tracking-wider">Ürünü Üstlen</span>
+      <h3 id="reserveModalProductName" class="text-xl font-bold text-textDark mt-0.5">--</h3>
+    </div>
+
+    <form id="reserveForm" onsubmit="handleReserveSubmit(event)" class="space-y-4">
+      <input type="hidden" id="reserveProductId">
+
+      <div>
+        <label class="block text-xs font-bold text-slate-700 mb-1">Adınız ve Soyadınız *</label>
+        <input type="text" id="reserveName" required placeholder="Örn: Teyzesi Ayşe" class="w-full px-3.5 py-2.5 border border-slate-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-babyBlue">
+      </div>
+
+      <div>
+        <label class="block text-xs font-bold text-slate-700 mb-1">Kaç Adet Almak İstiyorsunuz?</label>
+        <select id="reserveQuantity" class="w-full px-3.5 py-2.5 border border-slate-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-babyBlue"></select>
+      </div>
+
+      <div>
+        <label class="block text-xs font-bold text-slate-700 mb-1">Aileye Notunuz (İsteğe Bağlı)</label>
+        <textarea id="reserveNote" rows="2" placeholder="Tebrikler veya özel mesajınız..." class="w-full px-3.5 py-2.5 border border-slate-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-babyBlue"></textarea>
+      </div>
+
+      <button type="submit" class="w-full py-3 bg-babyBlueDark hover:bg-slate-800 text-white font-bold rounded-xl shadow-lg transition-all">
+        Ben Bu Ürünü Üstleniyorum ❤️
+      </button>
+    </form>
+  </div>
+</div>
+
+
+<!-- MODAL 2: Group Contribution (Ortak Al) Modal -->
+<div id="groupModal" class="fixed inset-0 bg-slate-900/60 backdrop-blur-xs z-50 hidden flex items-center justify-center p-4">
+  <div class="bg-white rounded-3xl max-w-md w-full p-6 shadow-2xl relative">
+    <button onclick="closeModal('groupModal')" class="absolute right-4 top-4 text-slate-400 hover:text-slate-600 w-8 h-8 rounded-full bg-slate-100 flex items-center justify-center">
+      <i class="fa-solid fa-xmark"></i>
+    </button>
+
+    <div class="mb-4">
+      <span class="inline-flex items-center gap-1 text-xs font-bold text-emerald-700 uppercase tracking-wider bg-emerald-50 px-2 py-0.5 rounded-md">
+        <i class="fa-solid fa-handshake"></i> Ortak Hediye Katkısı
+      </span>
+      <h3 id="groupModalProductName" class="text-xl font-bold text-textDark mt-1">--</h3>
+      <div id="groupModalPriceInfo" class="text-xs text-slate-500 mt-1">--</div>
+    </div>
+
+    <form id="groupForm" onsubmit="handleGroupSubmit(event)" class="space-y-4">
+      <input type="hidden" id="groupProductId">
+
+      <div>
+        <label class="block text-xs font-bold text-slate-700 mb-1">Adınız ve Soyadınız *</label>
+        <input type="text" id="groupName" required placeholder="Örn: Ahmet Amca" class="w-full px-3.5 py-2.5 border border-slate-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-babyBlue">
+      </div>
+
+      <div>
+        <label class="block text-xs font-bold text-slate-700 mb-1">Katkı Türü Seçin *</label>
+        <div class="grid grid-cols-3 gap-2 mb-2">
+          <button type="button" onclick="setGroupAmountPercent(25)" class="py-2 bg-slate-100 hover:bg-babySoftBlue font-bold text-xs rounded-xl text-slate-700 border border-slate-200">%25 Katkı</button>
+          <button type="button" onclick="setGroupAmountPercent(50)" class="py-2 bg-slate-100 hover:bg-babySoftBlue font-bold text-xs rounded-xl text-slate-700 border border-slate-200">%50 Katkı</button>
+          <button type="button" onclick="setGroupAmountFullRemaining()" class="py-2 bg-emerald-50 hover:bg-emerald-100 font-bold text-xs rounded-xl text-emerald-800 border border-emerald-200">Kalanı Tamamla</button>
+        </div>
+        <div class="relative">
+          <input type="number" id="groupAmount" min="1" required placeholder="Katkı Tutarınız (TL)" class="w-full pl-3.5 pr-10 py-2.5 border border-slate-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-babyBlue">
+          <span class="absolute right-3 top-3 text-xs font-bold text-slate-400">₺</span>
+        </div>
+      </div>
+
+      <div>
+        <label class="block text-xs font-bold text-slate-700 mb-1">Notunuz (İsteğe Bağlı)</label>
+        <textarea id="groupNote" rows="2" placeholder="Ortak hediyemiz olsun!..." class="w-full px-3.5 py-2.5 border border-slate-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-babyBlue"></textarea>
+      </div>
+
+      <button type="submit" class="w-full py-3 bg-emerald-600 hover:bg-emerald-700 text-white font-bold rounded-xl shadow-lg shadow-emerald-600/20 transition-all">
+        Katkımı Onaylıyorum 🤝
+      </button>
+    </form>
+  </div>
+</div>
+
+
+<!-- MODAL 3: Guest Suggestion / Add Item Modal -->
+<div id="suggestModal" class="fixed inset-0 bg-slate-900/60 backdrop-blur-xs z-50 hidden flex items-center justify-center p-4">
+  <div class="bg-white rounded-3xl max-w-lg w-full p-6 shadow-2xl relative max-h-[90vh] overflow-y-auto">
+    <button onclick="closeModal('suggestModal')" class="absolute right-4 top-4 text-slate-400 hover:text-slate-600 w-8 h-8 rounded-full bg-slate-100 flex items-center justify-center">
+      <i class="fa-solid fa-xmark"></i>
+    </button>
+
+    <div class="mb-4">
+      <span class="text-xs font-bold text-emerald-600 uppercase tracking-wider">Hediye / İhtiyaç Fikri</span>
+      <h3 class="text-xl font-bold text-textDark">Yeni İhtiyaç / Öneri Ekle 🎁</h3>
+      <p class="text-xs text-slate-500 mt-1">İlber Doruk için gerekli gördüğünüz bir ürünü listeye ekleyebilirsiniz.</p>
+    </div>
+
+    <form id="suggestForm" onsubmit="handleSuggestSubmit(event)" class="space-y-4">
+      <div>
+        <label class="block text-xs font-bold text-slate-700 mb-1">Ürün Adı *</label>
+        <input type="text" id="suggestName" required placeholder="Örn: Bebek Tırnak Makası Seti" class="w-full px-3.5 py-2.5 border border-slate-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-babyBlue">
+      </div>
+
+      <div class="grid grid-cols-2 gap-3">
+        <div>
+          <label class="block text-xs font-bold text-slate-700 mb-1">Kategori *</label>
+          <input type="text" id="suggestCategory" required placeholder="Örn: Bakım & Hijyen" class="w-full px-3.5 py-2.5 border border-slate-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-babyBlue">
+        </div>
+        <div>
+          <label class="block text-xs font-bold text-slate-700 mb-1">Tahmini Fiyat / Tutar (TL)</label>
+          <input type="number" id="suggestPrice" placeholder="Örn: 450" class="w-full px-3.5 py-2.5 border border-slate-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-babyBlue">
+        </div>
+      </div>
+
+      <div class="grid grid-cols-2 gap-3">
+        <div>
+          <label class="block text-xs font-bold text-slate-700 mb-1">Marka / Model</label>
+          <input type="text" id="suggestBrand" placeholder="Örn: Chicco" class="w-full px-3.5 py-2.5 border border-slate-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-babyBlue">
+        </div>
+        <div>
+          <label class="block text-xs font-bold text-slate-700 mb-1">Satın Alma Linki</label>
+          <input type="url" id="suggestLink" placeholder="https://..." class="w-full px-3.5 py-2.5 border border-slate-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-babyBlue">
+        </div>
+      </div>
+
+      <div>
+        <label class="block text-xs font-bold text-slate-700 mb-1">Açıklama / Not</label>
+        <textarea id="suggestDescription" rows="2" placeholder="Neden faydalı olduğunu veya detayları belirtebilirsiniz..." class="w-full px-3.5 py-2.5 border border-slate-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-babyBlue"></textarea>
+      </div>
+
+      <div>
+        <label class="block text-xs font-bold text-slate-700 mb-1">Ekleyen / Öneren Adı *</label>
+        <input type="text" id="suggestAddedBy" required placeholder="Adınız" class="w-full px-3.5 py-2.5 border border-slate-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-babyBlue">
+      </div>
+
+      <div class="flex items-center gap-2 pt-1">
+        <input type="checkbox" id="suggestAllowGroup" class="w-4 h-4 accent-babyBlue rounded">
+        <label for="suggestAllowGroup" class="text-xs font-medium text-slate-600">Bu ürün yüksek bütçelidir, ortak alıma açılsın 🤝</label>
+      </div>
+
+      <button type="submit" class="w-full py-3 bg-emerald-600 hover:bg-emerald-700 text-white font-bold rounded-xl shadow-lg shadow-emerald-600/20 transition-all">
+        Öneriyi Listeye Ekle ✨
+      </button>
+    </form>
+  </div>
+</div>
+
+
+<!-- MODAL 4: Admin Login Modal -->
+<div id="adminLoginModal" class="fixed inset-0 bg-slate-900/60 backdrop-blur-xs z-50 hidden flex items-center justify-center p-4">
+  <div class="bg-white rounded-3xl max-w-sm w-full p-6 shadow-2xl relative">
+    <button onclick="closeModal('adminLoginModal')" class="absolute right-4 top-4 text-slate-400 hover:text-slate-600 w-8 h-8 rounded-full bg-slate-100 flex items-center justify-center">
+      <i class="fa-solid fa-xmark"></i>
+    </button>
+
+    <div class="text-center mb-6">
+      <div class="w-12 h-12 bg-babySoftBlue text-babyBlueDark rounded-full flex items-center justify-center mx-auto mb-2 text-xl">
+        <i class="fa-solid fa-lock"></i>
+      </div>
+      <h3 class="text-xl font-bold text-textDark">Yönetici Girişi</h3>
+    </div>
+
+    <form onsubmit="handleAdminLogin(event)" class="space-y-4">
+      <div>
+        <label class="block text-xs font-bold text-slate-700 mb-1">Admin Şifresi</label>
+        <input type="password" id="adminPasswordInput" required placeholder="••••••••" class="w-full px-3.5 py-2.5 border border-slate-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-babyBlue">
+      </div>
+
+      <button type="submit" class="w-full py-3 bg-babyBlueDark hover:bg-slate-800 text-white font-bold rounded-xl transition-all">
+        Giriş Yap
+      </button>
+    </form>
+  </div>
+</div>
+
+
+<!-- Toast Notifications -->
+<div id="toast" class="fixed bottom-6 left-1/2 -translate-x-1/2 bg-slate-900 text-white px-6 py-3 rounded-2xl shadow-2xl z-50 transition-all duration-300 opacity-0 pointer-events-none translate-y-4 flex items-center gap-3">
+  <i id="toastIcon" class="fa-solid fa-circle-check text-emerald-400"></i>
+  <span id="toastMsg" class="text-sm font-semibold">--</span>
+</div>
+
+
+<!-- FOOTER -->
+<footer class="bg-slate-900 text-slate-400 py-8 px-4 border-t border-slate-800 text-center">
+  <div class="max-w-6xl mx-auto flex flex-col sm:flex-row justify-between items-center gap-4 text-xs">
+    <div>
+      <strong class="text-white text-sm">İlber Doruk Bebek İhtiyaç Listesi</strong>
+      <p class="text-slate-500 mt-0.5">Sevgiyle hazırlandı. 🤍</p>
+    </div>
+
+    <div>
+      <button onclick="openAdminLoginModal()" class="text-slate-500 hover:text-babyBlue transition-colors flex items-center gap-1 mx-auto">
+        <i class="fa-solid fa-user-gear"></i> Yönetici Modu
+      </button>
+    </div>
+  </div>
+</footer>
+
+
+<script>
+/* =====================================================
+   SUPABASE & LOCALSTORAGE HYBRID INITIALIZATION
+===================================================== */
+const SUPABASE_URL = "https://oygyxpiwhbhwakzpbjyv.supabase.co";
+const SUPABASE_KEY = "sb_publishable_Vil6dW6UWJCCTVNhASqr_Q_FmKJQi66";
+
+let supabaseClient = null;
+
+try {
+  if (window.supabase && SUPABASE_URL && !SUPABASE_URL.includes("your-supabase")) {
+    supabaseClient = window.supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
+  }
+} catch (e) {
+  console.log("Supabase initialization fallback to LocalStorage.");
+}
+
+// Initial Mock Data if LocalStorage is empty
+const INITIAL_MOCK_PRODUCTS = [
+  {
+    id: 1,
+    name: "Ergonomik Bebek Arabası",
+    category: "Taşıma & Seyahat",
+    quantity: 1,
+    price: 12500,
+    brand: "Hamilton",
+    model: "X1 Plus",
+    description: "Kabin boy, tek elle katlanabilir hafif seyahat arabası.",
+    image: "https://images.unsplash.com/photo-1591088398332-8a7791972843?auto=format&fit=crop&w=600&q=80",
+    link: "https://www.google.com",
+    priority: "Çok Yüksek",
+    allow_group: true,
+    created_at: new Date().toISOString()
+  },
+  {
+    id: 2,
+    name: "Anne Yanı Beşik",
+    category: "Oda & Uyku",
+    quantity: 1,
+    price: 4800,
+    brand: "Chicco",
+    model: "Next2Me Magic",
+    description: "Sallanabilir, kademeli yükseklik ayarlı beşik.",
+    image: "https://images.unsplash.com/photo-1544126592-807ade215a0b?auto=format&fit=crop&w=600&q=80",
+    link: "https://www.google.com",
+    priority: "Yüksek",
+    allow_group: true,
+    created_at: new Date().toISOString()
+  },
+  {
+    id: 3,
+    name: "Bebek Bakım Seti",
+    category: "Bakım & Hijyen",
+    quantity: 2,
+    price: 650,
+    brand: "Philips Avent",
+    model: "SCH400/00",
+    description: "Dijital ateş ölçer, burun aspiratörü ve tırnak makası.",
+    image: "https://images.unsplash.com/photo-1515488042361-ee00e0ddd4e4?auto=format&fit=crop&w=600&q=80",
+    link: "https://www.google.com",
+    priority: "Normal",
+    allow_group: false,
+    created_at: new Date().toISOString()
+  }
+];
+
+const INITIAL_MOCK_RESERVATIONS = [
+  {
+    id: 101,
+    product_id: 3,
+    name: "Merve Teyze",
+    quantity: 1,
+    type: "full", // "full" or "group"
+    amount: 0,
+    note: "Sağlıkla gelsin minik bebek!",
+    created_at: new Date().toISOString()
+  }
+];
+
+// Global State
+let products = [];
+let reservations = [];
+let adminLoggedIn = false;
+const ADMIN_PASSWORD = "ilber2026";
+
+/* =====================================================
+   APP LAUNCH
+===================================================== */
+document.addEventListener("DOMContentLoaded", async () => {
+  startCountdown();
+  await loadData();
+});
+
+async function loadData() {
+  document.getElementById("loading").style.display = "block";
+
+  if (supabaseClient) {
+    try {
+      const { data: pData, error: pErr } = await supabaseClient.from("products").select("*").order("id");
+      const { data: rData, error: rErr } = await supabaseClient.from("reservations").select("*");
+
+      if (!pErr && pData) products = pData;
+      if (!rErr && rData) reservations = rData;
+    } catch (err) {
+      console.warn("Supabase fetch error, switching to LocalStorage:", err);
+      loadFromLocalStorage();
+    }
+  } else {
+    loadFromLocalStorage();
+  }
+
+  document.getElementById("loading").style.display = "none";
+  populateCategoryFilter();
+  renderProducts();
+
+  if (adminLoggedIn) {
+    renderAdminProductsList();
+  }
+}
+
+function loadFromLocalStorage() {
+  const localP = localStorage.getItem("ilber_products");
+  const localR = localStorage.getItem("ilber_reservations");
+
+  products = localP ? JSON.parse(localP) : INITIAL_MOCK_PRODUCTS;
+  reservations = localR ? JSON.parse(localR) : INITIAL_MOCK_RESERVATIONS;
+
+  saveToLocalStorage();
+}
+
+function saveToLocalStorage() {
+  localStorage.setItem("ilber_products", JSON.stringify(products));
+  localStorage.setItem("ilber_reservations", JSON.stringify(reservations));
+}
+
+/* =====================================================
+   CALCULATIONS (Reservations & Group Contributions)
+===================================================== */
+function getProductStats(product) {
+  const itemReservations = reservations.filter(r => Number(r.product_id) === Number(product.id));
+  
+  // Total quantity reserved full
+  const fullReservedQty = itemReservations
+    .filter(r => r.type === "full" || !r.type)
+    .reduce((acc, r) => acc + Number(r.quantity || 1), 0);
+
+  // Group contributions total amount
+  const totalGroupRaised = itemReservations
+    .filter(r => r.type === "group")
+    .reduce((acc, r) => acc + Number(r.amount || 0), 0);
+
+  const totalPrice = Number(product.price || 0);
+  const totalQty = Number(product.quantity || 1);
+  const remainingQty = Math.max(0, totalQty - fullReservedQty);
+
+  const groupCompleted = totalPrice > 0 ? totalGroupRaised >= totalPrice : false;
+  const isFullyClaimed = remainingQty === 0 || groupCompleted;
+
+  return {
+    fullReservedQty,
+    totalGroupRaised,
+    remainingQty,
+    groupCompleted,
+    isFullyClaimed,
+    itemReservations
+  };
+}
+
+/* =====================================================
+   RENDER PRODUCTS GRID
+===================================================== */
+function renderProducts() {
+  const grid = document.getElementById("productsGrid");
+  const empty = document.getElementById("emptyProducts");
+
+  const searchVal = document.getElementById("searchInput").value.toLowerCase().trim();
+  const catVal = document.getElementById("categoryFilter").value;
+  const prioVal = document.getElementById("priorityFilter").value;
+  const statusVal = document.getElementById("statusFilter").value;
+
+  grid.innerHTML = "";
+
+  const filtered = products.filter(product => {
+    const stats = getProductStats(product);
+
+    // Search filter
+    const matchesSearch = !searchVal || 
+      product.name.toLowerCase().includes(searchVal) ||
+      (product.brand && product.brand.toLowerCase().includes(searchVal)) ||
+      (product.category && product.category.toLowerCase().includes(searchVal));
+
+    // Category filter
+    const matchesCat = !catVal || product.category === catVal;
+
+    // Priority filter
+    const matchesPrio = !prioVal || product.priority === prioVal;
+
+    // Status filter
+    let matchesStatus = true;
+    if (statusVal === "completed") matchesStatus = stats.isFullyClaimed;
+    if (statusVal === "open") matchesStatus = !stats.isFullyClaimed;
+    if (statusVal === "group") matchesStatus = product.allow_group && !stats.isFullyClaimed;
+
+    return matchesSearch && matchesCat && matchesPrio && matchesStatus;
+  });
+
+  if (!filtered.length) {
+    empty.classList.remove("hidden");
+    return;
+  }
+
+  empty.classList.add("hidden");
+
+  filtered.forEach(product => {
+    const stats = getProductStats(product);
+    const card = document.createElement("article");
+    card.className = "glass-card rounded-3xl overflow-hidden shadow-md flex flex-col justify-between hover:shadow-xl transition-all duration-300";
+
+    const priceText = product.price ? `${Number(product.price).toLocaleString("tr-TR")} ₺` : null;
+
+    // Group progress percentage calculation
+    let groupPercent = 0;
+    if (product.price && product.price > 0) {
+      groupPercent = Math.min(100, Math.round((stats.totalGroupRaised / product.price) * 100));
+    }
+
+    card.innerHTML = `
+      <div>
+        <!-- Image & Top Badges -->
+        <div class="relative h-48 bg-slate-100 flex items-center justify-center overflow-hidden">
+          ${
+            product.image
+            ? `<img src="${escapeHtml(product.image)}" alt="${escapeHtml(product.name)}" class="w-full h-full object-cover" onerror="this.src='https://placehold.co/600x400/e8f1f5/4a7082?text=Bebek+Hediyesi'">`
+            : `<div class="text-4xl text-babyBlue"><i class="fa-solid fa-baby-carriage"></i></div>`
+          }
+
+          <div class="absolute top-3 left-3 flex flex-wrap gap-1.5">
+            <span class="px-2.5 py-1 bg-white/90 backdrop-blur-xs text-babyBlueDark text-[11px] font-bold rounded-lg shadow-xs">
+              ${escapeHtml(product.category || "İhtiyaç")}
+            </span>
+            ${
+              product.priority === "Çok Yüksek" 
+              ? `<span class="px-2 py-1 bg-rose-500 text-white text-[10px] font-bold rounded-lg shadow-xs">🔥 Çok Yüksek</span>`
+              : product.priority === "Yüksek"
+              ? `<span class="px-2 py-1 bg-amber-500 text-white text-[10px] font-bold rounded-lg shadow-xs">⚡ Yüksek</span>`
+              : ''
+            }
+          </div>
+
+          ${
+            stats.isFullyClaimed
+            ? `<div class="absolute inset-0 bg-slate-900/60 backdrop-blur-xs flex items-center justify-center">
+                 <span class="bg-emerald-500 text-white text-xs font-black uppercase tracking-wider px-4 py-2 rounded-xl shadow-lg">
+                   ✓ Tamamı Tamamlandı
+                 </span>
+               </div>`
+            : ''
+          }
+        </div>
+
+        <!-- Body -->
+        <div class="p-5">
+          <div class="flex justify-between items-start gap-2 mb-1">
+            <h3 class="font-bold text-lg text-textDark leading-snug">${escapeHtml(product.name)}</h3>
+            ${priceText ? `<span class="text-sm font-extrabold text-babyBlueDark whitespace-nowrap">${priceText}</span>` : ''}
+          </div>
+
+          <p class="text-xs text-slate-500 line-clamp-2 mb-3 leading-relaxed">
+            ${escapeHtml(product.description || "Açıklama belirtilmemiş.")}
+          </p>
+
+          <!-- Product Details List -->
+          <div class="space-y-1 text-xs text-slate-600 mb-4 bg-slate-50/80 p-2.5 rounded-xl border border-slate-100">
+            ${product.brand ? `<div><span class="font-bold text-slate-400">Marka:</span> ${escapeHtml(product.brand)}</div>` : ''}
+            ${product.model ? `<div><span class="font-bold text-slate-400">Model/Tercih:</span> ${escapeHtml(product.model)}</div>` : ''}
+            <div><span class="font-bold text-slate-400">Gereken Adet:</span> ${product.quantity} Adet</div>
+          </div>
+
+          <!-- Group Progress Bar if group allowed -->
+          ${
+            product.allow_group && product.price
+            ? `
+              <div class="mb-4 bg-emerald-50 p-3 rounded-2xl border border-emerald-100">
+                <div class="flex justify-between items-center text-xs mb-1 font-bold">
+                  <span class="text-emerald-800 flex items-center gap-1">
+                    <i class="fa-solid fa-handshake"></i> Ortak Alım Birikimi
+                  </span>
+                  <span class="text-emerald-700">%${groupPercent}</span>
+                </div>
+                <div class="w-full h-2 bg-emerald-200/60 rounded-full overflow-hidden">
+                  <div class="h-full bg-emerald-500 progress-bar-fill" style="width: ${groupPercent}%"></div>
+                </div>
+                <div class="flex justify-between text-[11px] text-emerald-700/80 mt-1">
+                  <span>Toplanan: ${stats.totalGroupRaised.toLocaleString("tr-TR")} ₺</span>
+                  <span>Hedef: ${Number(product.price).toLocaleString("tr-TR")} ₺</span>
+                </div>
+              </div>
+            ` : ''
+          }
+
+          <!-- Reserved Persons Avatars / Names -->
+          ${
+            stats.itemReservations.length > 0
+            ? `
+              <div class="mb-4 pt-2 border-t border-slate-100">
+                <span class="text-[11px] font-bold text-slate-400 uppercase tracking-wider block mb-1">Destek Olanlar:</span>
+                <div class="flex flex-wrap gap-1">
+                  ${stats.itemReservations.map(r => `
+                    <span class="inline-flex items-center gap-1 text-[11px] bg-babySoftBlue text-babyBlueDark font-semibold px-2 py-0.5 rounded-md">
+                      <i class="fa-solid fa-heart text-rose-400 text-[9px]"></i> ${escapeHtml(r.name)} ${r.type==='group' ? `(${r.amount}₺)` : ''}
+                    </span>
+                  `).join('')}
+                </div>
+              </div>
+            ` : ''
+          }
+        </div>
+      </div>
+
+      <!-- Action Buttons -->
+      <div class="p-5 pt-0 space-y-2">
+        ${
+          product.link
+          ? `
+            <a href="${escapeHtml(product.link)}" target="_blank" rel="noopener" class="block text-center text-xs text-babyBlueDark hover:underline font-bold py-1">
+              Ürünü Mağazada İncele <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>
+            </a>
+          ` : ''
+        }
+
+        <div class="grid ${product.allow_group && !stats.isFullyClaimed ? 'grid-cols-2' : 'grid-cols-1'} gap-2">
+          
+          <button 
+            onclick="openReserveModal(${product.id})"
+            ${stats.isFullyClaimed ? 'disabled' : ''}
+            class="w-full py-2.5 px-3 bg-babyBlueDark hover:bg-slate-800 disabled:bg-slate-200 disabled:text-slate-400 text-white font-bold text-xs rounded-xl shadow-sm transition-all flex items-center justify-center gap-1.5">
+            <i class="fa-solid fa-gift"></i>
+            <span>${stats.isFullyClaimed ? 'Tamamı Ayrıldı' : 'Tek Başına Al'}</span>
+          </button>
+
+          ${
+            product.allow_group && !stats.isFullyClaimed
+            ? `
+              <button 
+                onclick="openGroupModal(${product.id})"
+                class="w-full py-2.5 px-3 bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs rounded-xl shadow-sm transition-all flex items-center justify-center gap-1.5">
+                <i class="fa-solid fa-handshake"></i>
+                <span>Ortak Ol / Katkı Yap</span>
+              </button>
+            ` : ''
+          }
+
+        </div>
+      </div>
+    `;
+
+    grid.appendChild(card);
+  });
+}
+
+/* =====================================================
+   POPULATE CATEGORY FILTER
+===================================================== */
+function populateCategoryFilter() {
+  const select = document.getElementById("categoryFilter");
+  const categories = [...new Set(products.map(p => p.category).filter(Boolean))];
+
+  select.innerHTML = '<option value="">Tüm Kategoriler</option>';
+  categories.forEach(cat => {
+    const opt = document.createElement("option");
+    opt.value = cat;
+    opt.textContent = cat;
+    select.appendChild(opt);
+  });
+}
+
+/* =====================================================
+   MODAL HANDLERS & FORM SUBMISSIONS
+===================================================== */
+function openModal(id) {
+  document.getElementById(id).classList.remove("hidden");
+}
+
+function closeModal(id) {
+  document.getElementById(id).classList.add("hidden");
+}
+
+// Single Reservation
+function openReserveModal(productId) {
+  const p = products.find(x => Number(x.id) === Number(productId));
+  if (!p) return;
+
+  const stats = getProductStats(p);
+  if (stats.isFullyClaimed) {
+    showToast("Bu ürünün tamamı zaten alındı.", "info");
+    return;
+  }
+
+  document.getElementById("reserveProductId").value = p.id;
+  document.getElementById("reserveModalProductName").textContent = p.name;
+
+  const select = document.getElementById("reserveQuantity");
+  select.innerHTML = "";
+  for (let i = 1; i <= stats.remainingQty; i++) {
+    const opt = document.createElement("option");
+    opt.value = i;
+    opt.textContent = `${i} Adet`;
+    select.appendChild(opt);
+  }
+
+  document.getElementById("reserveName").value = "";
+  document.getElementById("reserveNote").value = "";
+
+  openModal("reserveModal");
+}
+
+async function handleReserveSubmit(e) {
+  e.preventDefault();
+
+  const productId = Number(document.getElementById("reserveProductId").value);
+  const name = document.getElementById("reserveName").value.trim();
+  const quantity = Number(document.getElementById("reserveQuantity").value);
+  const note = document.getElementById("reserveNote").value.trim();
+
+  const newReservation = {
+    id: Date.now(),
+    product_id: productId,
+    name,
+    quantity,
+    type: "full",
+    amount: 0,
+    note,
+    created_at: new Date().toISOString()
+  };
+
+  if (supabaseClient) {
+    await supabaseClient.from("reservations").insert(newReservation);
+  }
+
+  reservations.push(newReservation);
+  saveToLocalStorage();
+
+  closeModal("reserveModal");
+  showToast("Harika! Bu hediyeyi üstlendiğiniz için teşekkür ederiz ❤️️");
+  renderProducts();
+}
+
+// Group Contribution Modal
+function openGroupModal(productId) {
+  const p = products.find(x => Number(x.id) === Number(productId));
+  if (!p) return;
+
+  const stats = getProductStats(p);
+
+  document.getElementById("groupProductId").value = p.id;
+  document.getElementById("groupModalProductName").textContent = p.name;
+  
+  const targetPrice = p.price || 0;
+  const remainingPrice = Math.max(0, targetPrice - stats.totalGroupRaised);
+
+  document.getElementById("groupModalPriceInfo").innerHTML = `
+    Hedef Fiyat: <strong>${targetPrice.toLocaleString("tr-TR")} ₺</strong> | 
+    Kalan Katkı İhtiyacı: <strong>${remainingPrice.toLocaleString("tr-TR")} ₺</strong>
+  `;
+
+  document.getElementById("groupName").value = "";
+  document.getElementById("groupAmount").value = "";
+  document.getElementById("groupNote").value = "";
+
+  openModal("groupModal");
+}
+
+function setGroupAmountPercent(percent) {
+  const productId = Number(document.getElementById("groupProductId").value);
+  const p = products.find(x => Number(x.id) === productId);
+  if (!p || !p.price) return;
+
+  const calc = Math.round((p.price * percent) / 100);
+  document.getElementById("groupAmount").value = calc;
+}
+
+function setGroupAmountFullRemaining() {
+  const productId = Number(document.getElementById("groupProductId").value);
+  const p = products.find(x => Number(x.id) === productId);
+  if (!p) return;
+
+  const stats = getProductStats(p);
+  const remaining = Math.max(0, (p.price || 0) - stats.totalGroupRaised);
+  document.getElementById("groupAmount").value = remaining;
+}
+
+async function handleGroupSubmit(e) {
+  e.preventDefault();
+
+  const productId = Number(document.getElementById("groupProductId").value);
+  const name = document.getElementById("groupName").value.trim();
+  const amount = Number(document.getElementById("groupAmount").value);
+  const note = document.getElementById("groupNote").value.trim();
+
+  const newReservation = {
+    id: Date.now(),
+    product_id: productId,
+    name,
+    quantity: 1,
+    type: "group",
+    amount,
+    note,
+    created_at: new Date().toISOString()
+  };
+
+  if (supabaseClient) {
+    await supabaseClient.from("reservations").insert(newReservation);
+  }
+
+  reservations.push(newReservation);
+  saveToLocalStorage();
+
+  closeModal("groupModal");
+  showToast("Ortak katkınız başarıyla eklendi. Teşekkürler! 🤝");
+  renderProducts();
+}
+
+// Guest Suggestion
+function openSuggestModal() {
+  document.getElementById("suggestForm").reset();
+  openModal("suggestModal");
+}
+
+async function handleSuggestSubmit(e) {
+  e.preventDefault();
+
+  const newProduct = {
+    id: Date.now(),
+    name: document.getElementById("suggestName").value.trim(),
+    category: document.getElementById("suggestCategory").value.trim(),
+    price: Number(document.getElementById("suggestPrice").value) || 0,
+    brand: document.getElementById("suggestBrand").value.trim(),
+    link: document.getElementById("suggestLink").value.trim(),
+    description: document.getElementById("suggestDescription").value.trim() + " (Öneren: " + document.getElementById("suggestAddedBy").value.trim() + ")",
+    quantity: 1,
+    priority: "Normal",
+    allow_group: document.getElementById("suggestAllowGroup").checked,
+    created_at: new Date().toISOString()
+  };
+
+  if (supabaseClient) {
+    await supabaseClient.from("products").insert(newProduct);
+  }
+
+  products.push(newProduct);
+  saveToLocalStorage();
+
+  closeModal("suggestModal");
+  populateCategoryFilter();
+  renderProducts();
+  showToast("Hediye öneriniz başarıyla listeye eklendi ✨");
+}
+
+/* =====================================================
+   ADMIN DASHBOARD LOGIC
+===================================================== */
+function openAdminLoginModal() {
+  openModal("adminLoginModal");
+}
+
+function handleAdminLogin(e) {
+  e.preventDefault();
+  const pass = document.getElementById("adminPasswordInput").value;
+
+  if (pass === ADMIN_PASSWORD) {
+    adminLoggedIn = true;
+    closeModal("adminLoginModal");
+    document.getElementById("adminSection").classList.remove("hidden");
+    document.getElementById("adminSection").scrollIntoView({ behavior: "smooth" });
+    renderAdminProductsList();
+    showToast("Admin paneline giriş yapıldı.");
+  } else {
+    showToast("Hatalı admin şifresi!", "error");
+  }
+}
+
+function logoutAdmin() {
+  adminLoggedIn = false;
+  document.getElementById("adminSection").classList.add("hidden");
+  showToast("Admin panelinden çıkış yapıldı.", "info");
+}
+
+document.getElementById("adminProductForm").addEventListener("submit", async function(e) {
+  e.preventDefault();
+  if (!adminLoggedIn) return;
+
+  const editId = document.getElementById("adminEditId").value;
+
+  const productData = {
+    name: document.getElementById("adminName").value.trim(),
+    category: document.getElementById("adminCategory").value.trim(),
+    priority: document.getElementById("adminPriority").value,
+    quantity: Number(document.getElementById("adminQuantity").value),
+    price: Number(document.getElementById("adminPrice").value) || 0,
+    brand: document.getElementById("adminBrand").value.trim(),
+    model: document.getElementById("adminModel").value.trim(),
+    image: document.getElementById("adminImage").value.trim(),
+    link: document.getElementById("adminLink").value.trim(),
+    description: document.getElementById("adminDescription").value.trim(),
+    allow_group: document.getElementById("adminAllowGroup").checked
+  };
+
+  if (editId) {
+    const idx = products.findIndex(p => Number(p.id) === Number(editId));
+    if (idx !== -1) {
+      products[idx] = { ...products[idx], ...productData };
+      if (supabaseClient) await supabaseClient.from("products").update(productData).eq("id", editId);
+    }
+    showToast("Ürün güncellendi.");
+  } else {
+    const newP = { id: Date.now(), ...productData, created_at: new Date().toISOString() };
+    products.push(newP);
+    if (supabaseClient) await supabaseClient.from("products").insert(newP);
+    showToast("Yeni ürün eklendi.");
+  }
+
+  saveToLocalStorage();
+  resetAdminForm();
+  populateCategoryFilter();
+  renderProducts();
+  renderAdminProductsList();
+});
+
+function editProductAdmin(id) {
+  const p = products.find(x => Number(x.id) === Number(id));
+  if (!p) return;
+
+  document.getElementById("adminEditId").value = p.id;
+  document.getElementById("adminName").value = p.name || "";
+  document.getElementById("adminCategory").value = p.category || "";
+  document.getElementById("adminPriority").value = p.priority || "Normal";
+  document.getElementById("adminQuantity").value = p.quantity || 1;
+  document.getElementById("adminPrice").value = p.price || "";
+  document.getElementById("adminBrand").value = p.brand || "";
+  document.getElementById("adminModel").value = p.model || "";
+  document.getElementById("adminImage").value = p.image || "";
+  document.getElementById("adminLink").value = p.link || "";
+  document.getElementById("adminDescription").value = p.description || "";
+  document.getElementById("adminAllowGroup").checked = !!p.allow_group;
+
+  document.getElementById("formTitle").textContent = "Ürün Düzenle";
+  document.getElementById("adminCancelEditBtn").classList.remove("hidden");
+}
+
+function resetAdminForm() {
+  document.getElementById("adminProductForm").reset();
+  document.getElementById("adminEditId").value = "";
+  document.getElementById("formTitle").textContent = "Ürün Ekle / Düzenle";
+  document.getElementById("adminCancelEditBtn").classList.add("hidden");
+}
+
+async function deleteProductAdmin(id) {
+  if (!confirm("Bu ürünü ve ait tüm rezervasyonları silmek istediğinize emin misiniz?")) return;
+
+  products = products.filter(p => Number(p.id) !== Number(id));
+  reservations = reservations.filter(r => Number(r.product_id) !== Number(id));
+
+  if (supabaseClient) {
+    await supabaseClient.from("products").delete().eq("id", id);
+    await supabaseClient.from("reservations").delete().eq("product_id", id);
+  }
+
+  saveToLocalStorage();
+  renderProducts();
+  renderAdminProductsList();
+  showToast("Ürün silindi.");
+}
+
+async function deleteReservationAdmin(resId) {
+  if (!confirm("Bu rezervasyonu silmek istediğinize emin misiniz?")) return;
+
+  reservations = reservations.filter(r => Number(r.id) !== Number(resId));
+
+  if (supabaseClient) {
+    await supabaseClient.from("reservations").delete().eq("id", resId);
+  }
+
+  saveToLocalStorage();
+  renderProducts();
+  renderAdminProductsList();
+  showToast("Rezervasyon silindi.");
+}
+
+function renderAdminProductsList() {
+  const container = document.getElementById("adminProductsList");
+  container.innerHTML = "";
+
+  if (!products.length) {
+    container.innerHTML = `<p class="text-xs text-slate-400">Henüz ürün bulunmuyor.</p>`;
+    return;
+  }
+
+  products.forEach(p => {
+    const stats = getProductStats(p);
+    const div = document.createElement("div");
+    div.className = "bg-slate-900 p-3.5 rounded-xl border border-slate-700/80 flex flex-col justify-between gap-2";
+
+    div.innerHTML = `
+      <div class="flex justify-between items-start">
+        <div>
+          <h4 class="font-bold text-sm text-white">${escapeHtml(p.name)}</h4>
+          <span class="text-xs text-slate-400">${escapeHtml(p.category)} | ${p.price ? p.price + '₺' : 'Fiyat Yok'}</span>
+        </div>
+        <div class="flex gap-1">
+          <button onclick="editProductAdmin(${p.id})" class="px-2.5 py-1 bg-slate-800 hover:bg-slate-700 text-babyBlue text-xs rounded-lg font-bold">Düzenle</button>
+          <button onclick="deleteProductAdmin(${p.id})" class="px-2.5 py-1 bg-rose-950/80 hover:bg-rose-900 text-rose-300 text-xs rounded-lg font-bold">Sil</button>
+        </div>
+      </div>
+
+      <!-- Reserver details in Admin -->
+      ${
+        stats.itemReservations.length > 0
+        ? `
+          <div class="mt-2 pt-2 border-t border-slate-800 text-xs space-y-1">
+            <span class="text-slate-400 font-bold block text-[10px] uppercase">Alıcılar / Ortaklar:</span>
+            ${stats.itemReservations.map(r => `
+              <div class="flex justify-between items-center bg-slate-800/50 px-2 py-1 rounded">
+                <span class="text-slate-200">
+                  <strong>${escapeHtml(r.name)}</strong> 
+                  ${r.type === 'group' ? `(${r.amount} ₺ Katkı)` : `(${r.quantity || 1} Adet Alındı)`}
+                  ${r.note ? `<i class="text-slate-400">"${escapeHtml(r.note)}"` : ''}
+                </span>
+                <button onclick="deleteReservationAdmin(${r.id})" class="text-rose-400 hover:text-rose-300 text-[10px] font-bold">Kaldır</button>
+              </div>
+            `).join('')}
+          </div>
+        ` : `<span class="text-[11px] text-slate-500 italic">Henüz ayıran olmadı</span>`
+      }
+    `;
+
+    container.appendChild(div);
+  });
+}
+
+/* =====================================================
+   COUNTDOWN TIMER
+===================================================== */
+function startCountdown() {
+  const target = new Date("2027-02-15T00:00:00+03:00");
+
+  function update() {
+    const now = new Date();
+    let diff = target.getTime() - now.getTime();
+    if (diff < 0) diff = 0;
+
+    const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+    const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
+    const minutes = Math.floor((diff / (1000 * 60)) % 60);
+    const seconds = Math.floor((diff / 1000) % 60);
+
+    document.getElementById("days").textContent = days;
+    document.getElementById("hours").textContent = String(hours).padStart(2, "0");
+    document.getElementById("minutes").textContent = String(minutes).padStart(2, "0");
+    document.getElementById("seconds").textContent = String(seconds).padStart(2, "0");
+  }
+
+  update();
+  setInterval(update, 1000);
+}
+
+/* =====================================================
+   HELPERS & TOAST UTILITY
+===================================================== */
+function showToast(msg, type = "success") {
+  const toast = document.getElementById("toast");
+  const msgEl = document.getElementById("toastMsg");
+  const icon = document.getElementById("toastIcon");
+
+  msgEl.textContent = msg;
+
+  if (type === "error") {
+    icon.className = "fa-solid fa-circle-xmark text-rose-400";
+  } else if (type === "info") {
+    icon.className = "fa-solid fa-circle-info text-sky-400";
+  } else {
+    icon.className = "fa-solid fa-circle-check text-emerald-400";
+  }
+
+  toast.classList.remove("opacity-0", "pointer-events-none", "translate-y-4");
+  
+  setTimeout(() => {
+    toast.classList.add("opacity-0", "pointer-events-none", "translate-y-4");
+  }, 3500);
+}
+
+function escapeHtml(str) {
+  return String(str ?? "")
+    .replaceAll("&", "&amp;")
+    .replaceAll("<", "&lt;")
+    .replaceAll(">", "&gt;")
+    .replaceAll('"', "&quot;")
+    .replaceAll("'", "&#039;");
+}
+</script>
+</body>
+</html>
